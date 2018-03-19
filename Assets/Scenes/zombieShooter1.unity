@@ -390,8 +390,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1593833728}
-  Width: 0
-  Height: 0
 --- !u!114 &786985656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -494,7 +492,7 @@ MonoBehaviour:
   - {fileID: 21300002, guid: 19b78a2899166964cbc15192476d3cc0, type: 3}
   backgroundObject: {fileID: 1123280161774930, guid: 36f483b4bd8672646b4e3a43089792da,
     type: 2}
-  cam: {fileID: 786985653}
+  boundsSizeY: 0
 --- !u!1 &1249184820
 GameObject:
   m_ObjectHideFlags: 0
