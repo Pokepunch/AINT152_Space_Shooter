@@ -8,14 +8,14 @@ public class SmoothFollow2D : MonoBehaviour
     public Transform player;
     private float scrollSpeed = 0.05f;
     public float ScrollSpeed { get; set; }
-    public float WidthPixels;
-    public float HeightPixels;
+    public float Width;
+    public float Height;
 
     private void Start()
     {
         Camera cam = GetComponent<Camera>();
-        WidthPixels = cam.pixelWidth;
-        HeightPixels = cam.pixelHeight;
+        Height = Screen.height;
+        Width = Screen.width;
     }
 
     // Update is called once per frame
