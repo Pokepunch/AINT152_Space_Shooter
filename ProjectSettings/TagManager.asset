@@ -14,9 +14,9 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
+  - Player Bullets
+  - Player
+  - Enemies
   - 
   - 
   - 
@@ -45,6 +45,9 @@ TagManager:
   - name: Ground
     uniqueID: 3149599383
     locked: 0
+  - name: Bullets
+    uniqueID: 80866979
+    locked: 0
   - name: Player
     uniqueID: 4249993923
     locked: 0
@@ -53,9 +56,6 @@ TagManager:
     locked: 0
   - name: FX
     uniqueID: 1948807821
-    locked: 0
-  - name: Bullets
-    uniqueID: 80866979
     locked: 0
   - name: Foreground
     uniqueID: 1877869305

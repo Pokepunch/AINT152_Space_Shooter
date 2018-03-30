@@ -5,7 +5,7 @@ using UnityEngine;
 public class BackgroundLooping : MonoBehaviour {
 
     Camera cam;
-    public float boundsSizeY;
+
 	// Use this for initialization
 	void Start ()
     {
@@ -15,7 +15,6 @@ public class BackgroundLooping : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        boundsSizeY = GetComponent<SpriteRenderer>().bounds.size.y;
         if (transform.position.y < cam.transform.position.y - transform.GetComponent<SpriteRenderer>().bounds.size.y)
         {
             transform.position = new Vector3(.0f, transform.position.y + (2 * GetComponent<SpriteRenderer>().bounds.size.y), .0f);
