@@ -4,16 +4,25 @@ using UnityEngine;
 
 public class WeaponScript : MonoBehaviour {
 
+    /// <summary>
+    /// Determines the delay between firing.
+    /// </summary>
     public float fireTime = 0.5f;
-    
+    /// <summary>
+    /// The energy of the weapon.
+    /// </summary>
+    public float energy = 10.0f;
+    /// <summary>
+    /// The ammount of energy it costs to fire the weapon.
+    /// </summary>
+    public float energyCost = 1.0f;
+
     public GameObject bulletPrefab;
     public Transform[] bulletSpawn;
-    private WeaponController shootBullet;
 
     private void OnEnable ()
     {
         WeaponController.OnWeaponFire += Fire;
-        shootBullet = transform.parent.GetComponent<WeaponController>();
     }
 
     private void OnDisable()
@@ -23,15 +32,30 @@ public class WeaponScript : MonoBehaviour {
 
     void Fire()
     {
-        shootBullet.IsFiring = true;
-        foreach (Transform spawn in bulletSpawn)
+        if (energy != 0)
         {
-            Instantiate(bulletPrefab, spawn.position, spawn.rotation);
+            foreach (Transform spawn in bulletSpawn)
+            {
+                Instantiate(bulletPrefab, spawn.position, spawn.rotation);
+            }
+            if (GetComponent<AudioSource>() != null)
+            {
+                GetComponent<AudioSource>().Play();
+            }
+            EnergySubtract();
         }
-        if (GetComponent<AudioSource>() != null)
+    }
+
+    public void EnergySubtract()
+    {
+        if (energy < energyCost)
         {
-            GetComponent<AudioSource>().Play();
+            energy = 0;
         }
-        shootBullet.Invoke("SetFiring", fireTime);
+        else if (energyCost > 0)
+        {
+            energy -= energyCost;
+        }
+        Debug.Log(gameObject.name + ": energy is " + energy);
     }
 }

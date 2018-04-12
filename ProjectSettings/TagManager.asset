@@ -4,7 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Zombie
+  - Powerup
+  - BGLayer0
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -17,8 +19,8 @@ TagManager:
   - Player Bullets
   - Player
   - Enemies
-  - 
-  - 
+  - Camera
+  - Powerups
   - 
   - 
   - 

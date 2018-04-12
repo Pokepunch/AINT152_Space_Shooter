@@ -15,9 +15,9 @@ public class BackgroundLooping : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        if (transform.position.y < cam.transform.position.y - transform.GetComponent<SpriteRenderer>().bounds.size.y)
+        if (transform.position.x < cam.transform.position.x - transform.GetComponent<SpriteRenderer>().bounds.size.x)
         {
-            transform.position = new Vector3(.0f, transform.position.y + (2 * GetComponent<SpriteRenderer>().bounds.size.y), .0f);
+            transform.position = new Vector3(transform.position.x + (2 * GetComponent<SpriteRenderer>().bounds.size.x), .0f, .0f);
         }
     }
 }

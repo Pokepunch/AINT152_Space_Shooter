@@ -20,17 +20,15 @@ public class WeaponController : MonoBehaviour {
     /// Index of currently equipped weapon.
     /// </summary>
     public int weaponIndex;
-    private bool isFiring = false;
+    /// <summary>
+    /// Set when the player is firing.
+    /// </summary>
+    public bool isFiring = false;
 
     private void Start()
     {
         weaponIndex = 0; // Get the index of the starter weapon.
         weaponList[weaponIndex].SetActive(true);
-    }
-
-    void SetFiring()
-    {
-        isFiring = false;
     }
 
     void Update()
@@ -66,10 +64,38 @@ public class WeaponController : MonoBehaviour {
             {
                 if (OnWeaponFire != null)
                 {
+                    IsFiring = true;
                     OnWeaponFire();
+                    Invoke("SetNotFiring", weaponList[weaponIndex].GetComponent<WeaponScript>().fireTime);
                 }
             }
         }
+    }
+
+    void RestoreEnergy(float amount)
+    {
+        float currEnergy = weaponList[weaponIndex].GetComponent<WeaponScript>().energy;
+        currEnergy += amount;
+        if (currEnergy > 10)
+        {
+            currEnergy = 10;
+        }
+        weaponList[weaponIndex].GetComponent<WeaponScript>().energy = currEnergy;
+    }
+
+    void SetNotFiring()
+    {
+        isFiring = false;
+    }
+
+    public void EnableWeapon(int index)
+    {
+        weaponList[index].SetActive(true);
+    }
+
+    public void DisableWeapon(int index)
+    {
+        weaponList[index].SetActive(false);
     }
 
     public bool IsFiring
@@ -82,15 +108,5 @@ public class WeaponController : MonoBehaviour {
         {
             isFiring = value;
         }
-    }
-
-    public void EnableWeapon(int index)
-    {
-        weaponList[index].SetActive(true);
-    }
-
-    public void DisableWeapon(int index)
-    {
-        weaponList[index].SetActive(false);
     }
 }
