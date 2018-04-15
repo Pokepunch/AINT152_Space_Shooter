@@ -8,8 +8,7 @@ public class LevelController : MonoBehaviour
     public delegate void ScrollSpeedChange(Vector2 speed, Vector2 direction);
     public static event ScrollSpeedChange OnScrollSpeedChange;
 
-	// Use this for initialization
-	void Start ()
+	void Awake ()
     {
 
 	}
@@ -17,6 +16,6 @@ public class LevelController : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-		
-	}
+
+    }
 }

@@ -1,12 +1,10 @@
 fileFormatVersion: 2
-guid: 19b78a2899166964cbc15192476d3cc0
-timeCreated: 1520857121
-licenseType: Pro
+guid: b28246e9fac448847b7f6ae245082e32
+timeCreated: 1523716998
+licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Background_Test_0
-    21300002: Background_Test_1
-    21300004: Background_Test_2
+    21300000: Button Side_0
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -99,7 +97,7 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-  - buildTarget: WebGL
+  - buildTarget: Windows Store Apps
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -109,7 +107,7 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-  - buildTarget: Windows Store Apps
+  - buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -123,44 +121,16 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Background_Test_1
-      rect:
-        serializedVersion: 2
-        x: 1496
-        y: 0
-        width: 1496
-        height: 1496
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Background_Test_0
+      name: Button Side_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 320
-        height: 180
+        width: 9
+        height: 43
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Background_Test_2
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 0
-        width: 320
-        height: 180
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 4, z: 0, w: 4}
       outline: []
       physicsShape: []
       tessellationDetail: 0
