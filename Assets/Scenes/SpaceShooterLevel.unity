@@ -113,63 +113,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &197830833
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 197830835}
-  - component: {fileID: 197830834}
-  - component: {fileID: 197830836}
-  m_Layer: 0
-  m_Name: LevelController
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &197830834
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 197830833}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f31e0ee4cf9ec746a447eefc3f7a3d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &197830835
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 197830833}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &197830836
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 197830833}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6630716deb0ca7a46bf0b4ad101d0a96, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tiles:
-  - {fileID: 21300000, guid: 19b78a2899166964cbc15192476d3cc0, type: 3}
-  - {fileID: 21300004, guid: 19b78a2899166964cbc15192476d3cc0, type: 3}
-  backgroundObject: {fileID: 1123280161774930, guid: 36f483b4bd8672646b4e3a43089792da,
-    type: 2}
 --- !u!1 &786985650
 GameObject:
   m_ObjectHideFlags: 0
@@ -309,7 +252,12 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4283783252908600, guid: 669a1a1d38fd9b24c85dacc53c971c3b, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114066554729649462, guid: 669a1a1d38fd9b24c85dacc53c971c3b,
+        type: 2}
+      propertyPath: flashFrameGap
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 669a1a1d38fd9b24c85dacc53c971c3b, type: 2}

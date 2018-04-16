@@ -20,6 +20,5 @@ public class Weap01Explosion : MonoBehaviour
         Instantiate(bulletPrefab, transform.position, transform.rotation);
         Instantiate(bulletPrefab, transform.position, rot1);
         Instantiate(bulletPrefab, transform.position, rot2);
-        Debug.Log(transform.rotation.z + " " + rot1.z);
     }
 }

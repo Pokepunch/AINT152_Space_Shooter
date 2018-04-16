@@ -22,6 +22,7 @@ public class DamageBehaviour : MonoBehaviour
         if (flashCounter == 0 && canDamage == true)
         {
             health -= damage;
+            Debug.Log(gameObject.name + " damaged. Health is " + health);
             flashCounter = flashTimes;
             if (health <= 0)
             {

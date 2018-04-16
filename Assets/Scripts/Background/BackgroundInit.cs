@@ -14,6 +14,6 @@ public class BackgroundInit : MonoBehaviour
         background_1 = Instantiate(backgroundObject, new Vector3(.1f, .0f, .0f), new Quaternion(.0f, .0f, .0f, .0f));
         background_1.GetComponent<SpriteRenderer>().sprite = tiles[0];
         background_2 = Instantiate(backgroundObject, new Vector3(background_1.transform.position.x + background_1.GetComponent<SpriteRenderer>().bounds.size.x, .0f), new Quaternion(.0f, .0f, .0f, .0f));
-        background_2.GetComponent<SpriteRenderer>().sprite = tiles[1];
+        background_2.GetComponent<SpriteRenderer>().sprite = tiles[0];
     }
 }
