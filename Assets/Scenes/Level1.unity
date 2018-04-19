@@ -167,8 +167,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tiles:
   - {fileID: 21300000, guid: 35557c7212836b44fafb6d61c903b9cc, type: 3}
-  backgroundObject: {fileID: 1123280161774930, guid: 36f483b4bd8672646b4e3a43089792da,
-    type: 2}
+  - {fileID: 21300000, guid: 5355587634502d3459a333cd9b8ec030, type: 3}
+  bg_layer0: {fileID: 1123280161774930, guid: 36f483b4bd8672646b4e3a43089792da, type: 2}
+  bg_layer1: {fileID: 1484637597611878, guid: 74c315d4aae72dc4f8a5e34512353166, type: 2}
 --- !u!1001 &460462890
 Prefab:
   m_ObjectHideFlags: 0

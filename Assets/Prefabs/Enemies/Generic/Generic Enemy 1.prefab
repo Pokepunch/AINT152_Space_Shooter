@@ -164,7 +164,7 @@ MonoBehaviour:
   health: 5
   canDamage: 1
   flashTimes: 3
-  flashFrameGap: 8
+  flashFrameGap: 4
   _default: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   white: {fileID: 2100000, guid: dc49b88d0af45ac4e88e9afeb85684a8, type: 2}
 --- !u!114 &114950234706829368

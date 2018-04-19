@@ -33,40 +33,43 @@ public class WeaponController : MonoBehaviour {
 
     void Update()
     {
-        if (Input.GetButtonDown("WeaponChangeUp"))
+        if (!StaticVariables.gamePaused)
         {
-            DisableWeapon(weaponIndex);
-            weaponIndex++;
-            if (weaponIndex > weaponList.Length - 1)
+            if (Input.GetButtonDown("WeaponChangeUp"))
             {
-                weaponIndex = 0;
-            }
-            EnableWeapon(weaponIndex);
-            Debug.Log("Weapon changed - increase. Weapon index is " + weaponIndex, gameObject);
-        }
-        else if (Input.GetButtonDown("WeaponChangeDown"))
-        {
-            DisableWeapon(weaponIndex);
-            if (weaponIndex == 0)
-            {
-                weaponIndex = weaponList.Length - 1;
-            }
-            else
-            {
-                weaponIndex--;
-            }
-            EnableWeapon(weaponIndex);
-            Debug.Log("Weapon changed - decrease. Weapon index is " + weaponIndex, gameObject);
-        }
-        if (Input.GetMouseButton(0))
-        {
-            if (!isFiring)
-            {
-                if (OnWeaponFire != null)
+                DisableWeapon(weaponIndex);
+                weaponIndex++;
+                if (weaponIndex > weaponList.Length - 1)
                 {
-                    IsFiring = true;
-                    OnWeaponFire();
-                    Invoke("SetNotFiring", weaponList[weaponIndex].GetComponent<WeaponScript>().fireTime);
+                    weaponIndex = 0;
+                }
+                EnableWeapon(weaponIndex);
+                Debug.Log("Weapon changed - increase. Weapon index is " + weaponIndex, gameObject);
+            }
+            else if (Input.GetButtonDown("WeaponChangeDown"))
+            {
+                DisableWeapon(weaponIndex);
+                if (weaponIndex == 0)
+                {
+                    weaponIndex = weaponList.Length - 1;
+                }
+                else
+                {
+                    weaponIndex--;
+                }
+                EnableWeapon(weaponIndex);
+                Debug.Log("Weapon changed - decrease. Weapon index is " + weaponIndex, gameObject);
+            }
+            if (Input.GetMouseButton(0))
+            {
+                if (!isFiring)
+                {
+                    if (OnWeaponFire != null)
+                    {
+                        IsFiring = true;
+                        OnWeaponFire();
+                        Invoke("SetNotFiring", weaponList[weaponIndex].GetComponent<WeaponScript>().fireTime);
+                    }
                 }
             }
         }
