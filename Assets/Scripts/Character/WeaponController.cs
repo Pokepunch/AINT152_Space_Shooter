@@ -29,6 +29,7 @@ public class WeaponController : MonoBehaviour {
     {
         weaponIndex = 0; // Get the index of the starter weapon.
         weaponList[weaponIndex].SetActive(true);
+        Cursor.visible = false;
     }
 
     void Update()
