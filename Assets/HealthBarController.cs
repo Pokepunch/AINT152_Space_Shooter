@@ -1,36 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class HealthBarController : MonoBehaviour
 {
     [SerializeField]
-    private GameObject[] healthObjects;
-    [SerializeField]
-    private int playerHealth = 10;
+    private Image healthFill;
 
-	// Use this for initialization
 	void Start ()
     {
-        DamageBehaviourPlayer.PlayerOnDamage += OnPlayerDamaged;
-        DamageBehaviourPlayer.PlayerOnHeal += OnPlayerHeal;
+        DamageBehaviourPlayer.PlayerOnHealthChanged += OnPlayerChanged;
 	}
 
-    public void OnPlayerDamaged(int health)
+    public void OnPlayerChanged(int health)
     {
-        for (int i = playerHealth; i > health; i--)
-        {
-            healthObjects[i-1].SetActive(false);
-        }
-        playerHealth = health;
-    }
-
-    public void OnPlayerHeal(int health)
-    {
-        for (int i = playerHealth; i < health; i++)
-        {
-            healthObjects[i].SetActive(true);
-        }
-        playerHealth = health;
+        healthFill.fillAmount = (float)health / 10;
     }
 }

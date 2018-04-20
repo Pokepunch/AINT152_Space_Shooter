@@ -8,11 +8,8 @@ public class DamageBehaviourPlayer : MonoBehaviour
     public int health = 10;
     public bool canDamage = true;
 
-    public delegate void OnDamage(int health);
-    public static event OnDamage PlayerOnDamage;
-
-    public delegate void OnHeal(int health);
-    public static event OnHeal PlayerOnHeal;
+    public delegate void OnHealthChanged(int health);
+    public static event OnHealthChanged PlayerOnHealthChanged;
 
     int flashCounter;
     float frameTimer;
@@ -28,9 +25,9 @@ public class DamageBehaviourPlayer : MonoBehaviour
         if (flashCounter == 0 && canDamage == true)
         {
             health -= damage;
-            if (PlayerOnDamage != null)
+            if (PlayerOnHealthChanged != null)
             {
-                PlayerOnDamage(health);
+                PlayerOnHealthChanged(health);
             }
             Debug.Log(gameObject.name + " damaged. Health is " + health);
             flashCounter = flashTimes;
@@ -51,9 +48,9 @@ public class DamageBehaviourPlayer : MonoBehaviour
         }
         health = _health;
         Debug.Log(gameObject.name + " healed. Health is " + health);
-        if (PlayerOnHeal != null)
+        if (PlayerOnHealthChanged != null)
         {
-            PlayerOnHeal(health);
+            PlayerOnHealthChanged(health);
         }
     }
 
