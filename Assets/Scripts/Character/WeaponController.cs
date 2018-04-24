@@ -34,7 +34,7 @@ public class WeaponController : MonoBehaviour {
 
     void Update()
     {
-        if (!StaticVariables.gamePaused)
+        if (!StaticVariables.gamePaused && !StaticVariables.controlLock)
         {
             if (Input.GetButtonDown("WeaponChangeUp"))
             {

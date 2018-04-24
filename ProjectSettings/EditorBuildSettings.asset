@@ -12,5 +12,11 @@ EditorBuildSettings:
     path: Assets/Scenes/SpaceShooterLevel.unity
     guid: da1b136ab9260034bb8e36db81541c3d
   - enabled: 1
+    path: Assets/Scenes/FadeInScene.unity
+    guid: 313dd233b6a627c44a0176390527d534
+  - enabled: 1
+    path: Assets/Scenes/FadeOutScene.unity
+    guid: 1f8acc1ff3ad46949ad6b67334faeb92
+  - enabled: 1
     path: Assets/Scenes/Level1.unity
     guid: 237c467a7f0aa814fa04363b96b35ba7

@@ -65,7 +65,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   multiplier: 4
-  speed: {x: 1, y: 0}
+  speed: {x: 0, y: 0}
   direction: {x: -1, y: 0}
 --- !u!212 &212024138627761290
 SpriteRenderer:

@@ -27,6 +27,8 @@ public class Weap02Script : MonoBehaviour {
     private Animator animator;
     private float deltaTime;
 
+    public LayerMask mask;
+
     private void OnEnable ()
     {
         animator = GetComponent<Animator>();
@@ -39,39 +41,55 @@ public class Weap02Script : MonoBehaviour {
         Cursor.visible = false;
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        if (Input.GetMouseButton(0))
+        if (!StaticVariables.controlLock)
         {
-            deltaTime += Time.deltaTime;
-            if (deltaTime >= chargeTime)
+            if (Input.GetMouseButton(0) && energy != 0)
             {
-                animator.Play("Weap02 Charge");
+                deltaTime += Time.deltaTime;
+                if (deltaTime >= chargeTime)
+                {
+                    animator.Play("Weap02 Charge");
+                }
+                else
+                {
+                    animator.Play("Weap02 Charge 1");
+                }
             }
             else
             {
-                animator.Play("Weap02 Charge 1");
+                if (deltaTime >= chargeTime)
+                {
+                    Fire();
+                }
+                deltaTime = 0;
+                animator.Play("Start");
             }
-        }
-        else
-        {
-            if (deltaTime >= chargeTime)
+            float rotZ = GetMouseRotation();
+            if (rotZ >= -165 && rotZ <= -15)
             {
-                Fire();
+                Cursor.SetCursor(cursorGreen, new Vector2(24, 24), CursorMode.ForceSoftware);
             }
-            deltaTime = 0;
-            animator.Play("Start");
+            else
+            {
+                Cursor.SetCursor(cursorRed, new Vector2(24, 24), CursorMode.ForceSoftware);
+            }
         }
-        float rotZ = GetMouseRotation();
-        Debug.Log(rotZ);
-        if (rotZ >= -165 && rotZ <= -15)
+    }
+
+    public void Raycast()
+    {
+        Camera theCamera = Camera.main;
+
+        Vector3 target = theCamera.ScreenToWorldPoint(Input.mousePosition);
+        Debug.Log(target);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, target, Mathf.Infinity, mask);
+        if (hit.collider != null)
         {
-            Cursor.SetCursor(cursorGreen, new Vector2(24, 24), CursorMode.ForceSoftware);
+            Debug.Log("We hit " + hit.collider.gameObject.name + hit.point);
         }
-        else
-        {
-            Cursor.SetCursor(cursorRed, new Vector2(24, 24), CursorMode.ForceSoftware);
-        }
+        Debug.DrawRay(transform.position, hit.point, Color.green, 5);
     }
 
     void Fire()
@@ -82,6 +100,7 @@ public class Weap02Script : MonoBehaviour {
             Quaternion newRotation;
             if (rotZ >= -165 && rotZ <= -15)
             {
+             //   Raycast();
                 newRotation = Quaternion.Euler(new Vector3(0.0f, 0.0f, rotZ));
                 Instantiate(bulletPrefab, transform.position, newRotation);
 
@@ -102,7 +121,8 @@ public class Weap02Script : MonoBehaviour {
         Vector3 difference = target - transform.position;
         difference.Normalize();
         float rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
-        rotZ -= 90;
+        rotZ -= 90;
+
         return rotZ;
     }
 

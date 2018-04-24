@@ -5,4 +5,6 @@ using UnityEngine;
 public static class StaticVariables
 {
     public static bool gamePaused = false;
+
+    public static bool controlLock = true;
 }

@@ -12,21 +12,15 @@ public class LevelController : MonoBehaviour
     {
 
 	}
-	
-	// Update is called once per frame
-	void Update ()
+
+    private void OnEnable()
     {
-        if (Input.GetButtonDown("Cancel"))
-        {
-            StaticVariables.gamePaused = !StaticVariables.gamePaused;
-        }
-        if (StaticVariables.gamePaused)
-        {
-            Time.timeScale = 0;
-        }
-        else if (!StaticVariables.gamePaused)
-        {
-            Time.timeScale = 1;
-        }
+        OnScrollSpeedChange(new Vector2(1, 0), new Vector2(-1, 0));
+    }
+
+    // Update is called once per frame
+    void Update ()
+    {
+
     }
 }
