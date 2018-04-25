@@ -11,6 +11,9 @@ public class DamageBehaviourPlayer : MonoBehaviour
     public delegate void OnHealthChanged(int health);
     public static event OnHealthChanged PlayerOnHealthChanged;
 
+    public delegate void OnPlayerDeath();
+    public static event OnPlayerDeath PlayerDead;
+
     int flashCounter;
     float frameTimer;
     bool visible = true;
@@ -33,7 +36,8 @@ public class DamageBehaviourPlayer : MonoBehaviour
             flashCounter = flashTimes;
             if (health <= 0)
             {
-                Destroy(gameObject);
+                PlayerDead();
+                gameObject.SetActive(false);
             }
         }
     }

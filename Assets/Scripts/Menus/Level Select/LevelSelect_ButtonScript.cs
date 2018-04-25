@@ -5,11 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class LevelSelect_ButtonScript : MonoBehaviour
 {
-    private int index;
-
     private void Start()
     {
         FadeInControllerScript.FadeComplete += UnloadFadeIn;
+    }
+
+    private void OnDisable()
+    {
+        FadeInControllerScript.FadeComplete -= UnloadFadeIn;
     }
 
     public void UnloadFadeIn()
@@ -19,7 +22,7 @@ public class LevelSelect_ButtonScript : MonoBehaviour
 
     public void OnClick(int levelIndex)
     {
-        index = levelIndex;
+        StaticVariables.levelIndex = levelIndex;
         SceneManager.LoadScene("FadeOutScene", LoadSceneMode.Additive);
         FadeOutControllerScript.FadeComplete += LoadLevels;
     }
@@ -28,6 +31,6 @@ public class LevelSelect_ButtonScript : MonoBehaviour
     {
         SceneManager.LoadScene("SpaceShooterLevel");
         SceneManager.LoadScene("FadeInScene", LoadSceneMode.Additive);
-        SceneManager.LoadScene("Level" + index, LoadSceneMode.Additive);
+        SceneManager.LoadScene("Level" + StaticVariables.levelIndex, LoadSceneMode.Additive);
     }
 }

@@ -7,4 +7,8 @@ public static class StaticVariables
     public static bool gamePaused = false;
 
     public static bool controlLock = true;
+
+    public static int levelIndex = 1;
+
+    public static Vector2 playerRespawnPoint = Vector2.zero;
 }

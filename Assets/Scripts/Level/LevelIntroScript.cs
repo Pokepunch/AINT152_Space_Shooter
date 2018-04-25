@@ -9,17 +9,10 @@ public class LevelIntroScript : MonoBehaviour
     public Image healthBar;
     public float playerStartPos = -15;
 
-    private GameObject Player;
-    public bool shouldMovePlayer = false;
-
-    public void Start()
-    {
-        Player = GameObject.Find("Hero");
-    }
+    public GameObject Player;
 
     public void IntroStart()
     {
-        shouldMovePlayer = true;
         Player.GetComponent<TopDownCharacterController2D>().PlayerMove(1, 0);
     }
 
@@ -50,7 +43,6 @@ public class LevelIntroScript : MonoBehaviour
         {
             Player.GetComponent<TopDownCharacterController2D>().PlayerMove(0, 0);
             StaticVariables.controlLock = false;
-            shouldMovePlayer = false;
             Player.GetComponent<BoxCollider2D>().enabled = true;
             MoveHUD();
         }

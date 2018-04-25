@@ -6,15 +6,22 @@ using UnityEngine;
 public class ReadyTextScript : MonoBehaviour
 {
     public GameObject readyText;
-    public Image fillWhite;
+    public GameObject white;
+    private Image fillWhite;
 
     private bool done = false;
 
 	// Use this for initialization
 	void Start ()
     {
+        fillWhite = white.GetComponent<Image>();
         FadeInControllerScript.FadeComplete += ReadyStart;
 	}
+
+    private void OnDisable()
+    {
+        FadeInControllerScript.FadeComplete -= ReadyStart;
+    }
 
     void ReadyStart()
     {
@@ -44,8 +51,9 @@ public class ReadyTextScript : MonoBehaviour
             }
             else
             {
-                GameObject introControll = GameObject.Find("Level Intro Controller");
-                introControll.SendMessage("IntroStart");
+                done = false;
+                GameObject introControl = GameObject.Find("Level Intro Controller");
+                introControl.SendMessage("IntroStart");
             }
         }
         else

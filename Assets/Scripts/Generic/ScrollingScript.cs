@@ -11,22 +11,32 @@ public class ScrollingScript : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
-        LevelController.OnScrollSpeedChange += ScrollChange;
+        LevelController.OnScrollSpeedChange += SpeedChange;
+        LevelController.OnScrollDirectionChange += DirectionChange;
         speed *= multiplier;
     }
-	
-	// Update is called once per frame
-	void FixedUpdate ()
+
+    private void OnDisable()
+    {
+        LevelController.OnScrollSpeedChange -= SpeedChange;
+        LevelController.OnScrollDirectionChange -= DirectionChange;
+    }
+
+    // Update is called once per frame
+    void FixedUpdate ()
     {
         Vector3 Movement = new Vector3(speed.x * direction.x, speed.y * direction.y, 0f);
         Movement *= Time.deltaTime;
         transform.Translate(Movement);
     }
 
-    public void ScrollChange(Vector2 newSpeed, Vector2 newDirection)
+    public void SpeedChange(Vector2 newSpeed)
     {
-        Debug.Log(this.gameObject.name + ": ScrollChange received");
         speed = newSpeed * multiplier;
+    }
+
+    public void DirectionChange(Vector2 newDirection)
+    {
         direction = newDirection;
     }
 }
