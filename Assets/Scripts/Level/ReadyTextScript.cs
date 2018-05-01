@@ -10,13 +10,28 @@ public class ReadyTextScript : MonoBehaviour
     private Image fillWhite;
 
     private bool done = false;
+    private bool startCalled = false;
 
 	// Use this for initialization
 	void Start ()
     {
         fillWhite = white.GetComponent<Image>();
         FadeInControllerScript.FadeComplete += ReadyStart;
+        Invoke("FadeBackupStart", 3);
 	}
+
+    /// <summary>
+    /// If the fade in object isn't present this function will start the the script without it.
+    /// </summary>
+    private void FadeBackupStart()
+    {
+        if (!startCalled)
+        {
+            ReadyStart();
+            FadeInControllerScript.FadeComplete -= ReadyStart;
+        }
+    }
+
 
     private void OnDisable()
     {
@@ -25,6 +40,7 @@ public class ReadyTextScript : MonoBehaviour
 
     void ReadyStart()
     {
+        startCalled = true;
         fillWhite.fillAmount += 0.04f;
         if (fillWhite.fillAmount >= 1.0f)
         {

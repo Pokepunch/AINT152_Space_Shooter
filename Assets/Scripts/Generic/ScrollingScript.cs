@@ -5,8 +5,8 @@ using UnityEngine;
 public class ScrollingScript : MonoBehaviour {
 
     public float multiplier = 1f;
-    public Vector2 speed = new Vector2(0, 1);
-    public Vector2 direction = new Vector2(0, -1);
+    public Vector2 speed = new Vector2(0, 0);
+    public Vector2 direction = new Vector2(-1, 0);
 
     // Use this for initialization
     void Start ()

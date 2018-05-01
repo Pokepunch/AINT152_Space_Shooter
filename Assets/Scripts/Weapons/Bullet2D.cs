@@ -18,8 +18,18 @@ public class Bullet2D : MonoBehaviour {
     {
         CancelInvoke("Die");
     }
+
     void FixedUpdate()
     {
         GetComponent<Rigidbody2D>().velocity = transform.up * speed;
+    }
+
+    private void Update()
+    {
+        Vector3 viewPos = Camera.main.WorldToViewportPoint(transform.position);
+        if (viewPos.x < 0 || viewPos.x > 1)
+        {
+            Destroy(gameObject);
+        }
     }
 }
