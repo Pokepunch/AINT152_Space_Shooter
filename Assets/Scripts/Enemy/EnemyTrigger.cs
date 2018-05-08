@@ -6,7 +6,7 @@ public class EnemyTrigger : MonoBehaviour
 {
     public GameObject[] enemyList;
 
-    private Vector2 savedSpeed;
+    public Vector2 savedSpeed;
 
     private void Start()
     {

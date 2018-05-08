@@ -103,6 +103,7 @@ MonoBehaviour:
   damage: 2
   damageTag:
   - Enemy
+  - Asteroid
 --- !u!114 &114360992560440522
 MonoBehaviour:
   m_ObjectHideFlags: 1

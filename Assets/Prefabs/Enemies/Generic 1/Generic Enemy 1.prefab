@@ -69,10 +69,12 @@ GameObject:
   - component: {fileID: 212574208443259754}
   - component: {fileID: 61903807669035196}
   - component: {fileID: 61434371735747910}
+  - component: {fileID: 50608518883259398}
   - component: {fileID: 114500551357244948}
   - component: {fileID: 114671862122639026}
   - component: {fileID: 114806090220938134}
   - component: {fileID: 114536423428137862}
+  - component: {fileID: 114201191644864240}
   m_Layer: 10
   m_Name: Generic Enemy 1
   m_TagString: Enemy
@@ -135,6 +137,26 @@ Transform:
   m_Father: {fileID: 4819887423458756}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!50 &50608518883259398
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1705990390562360}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!61 &61434371735747910
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -202,6 +224,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114201191644864240
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1705990390562360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd277d98581a68846a3a6a55e0d0404d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerup: {fileID: 1819890414454096, guid: de566bc8f05f0364e8968ebbffb09f1e, type: 2}
+  dropChance: 0.8
 --- !u!114 &114500551357244948
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -213,7 +248,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d3265adc6dabb046ac2a36e607a903c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  multiplier: 3
+  multiplier: 6
   speed: {x: 0, y: 0}
   direction: {x: -1, y: 0}
 --- !u!114 &114536423428137862
@@ -231,8 +266,8 @@ MonoBehaviour:
   spawns:
   - {fileID: 4855207667616438}
   - {fileID: 4988921069773620}
-  speed: 2.5
-  isFiring: 0
+  ySpeed: 6
+  hasFired: 0
   fireDelay: 3
   fireDistance: 0.75
 --- !u!114 &114671862122639026
@@ -246,12 +281,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 710a05cb08f156c4fb4857de1cffc23e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 5
+  health: 3
   canDamage: 1
+  canDropPowerup: 1
   flashTimes: 3
   flashFrameGap: 4
   _default: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   white: {fileID: 2100000, guid: dc49b88d0af45ac4e88e9afeb85684a8, type: 2}
+  Explosion: {fileID: 1706303798417244, guid: c70c433c43409c940b3ac60c51e704ef, type: 2}
 --- !u!114 &114806090220938134
 MonoBehaviour:
   m_ObjectHideFlags: 1

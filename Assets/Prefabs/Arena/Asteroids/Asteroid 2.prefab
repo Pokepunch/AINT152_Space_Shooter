@@ -24,9 +24,9 @@ GameObject:
   - component: {fileID: 114461484485896560}
   - component: {fileID: 114277417095166252}
   - component: {fileID: 114909828297711278}
-  m_Layer: 10
+  m_Layer: 13
   m_Name: Asteroid 2
-  m_TagString: Enemy
+  m_TagString: Asteroid
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d3265adc6dabb046ac2a36e607a903c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  multiplier: 3
+  multiplier: 6
   speed: {x: 0, y: 0}
   direction: {x: -1, y: 0}
 --- !u!114 &114461484485896560
@@ -112,6 +112,7 @@ MonoBehaviour:
   damage: 1
   damageTag:
   - Player
+  - Enemy
 --- !u!114 &114909828297711278
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -125,10 +126,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 10
   canDamage: 0
+  canDropPowerup: 1
   flashTimes: 4
   flashFrameGap: 12
   _default: {fileID: 0}
   white: {fileID: 0}
+  Explosion: {fileID: 0}
 --- !u!212 &212103055982730658
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -8,6 +8,7 @@ TagManager:
   - BGLayer0
   - Enemy
   - BGLayer1
+  - Asteroid
   layers:
   - Default
   - TransparentFX
@@ -22,7 +23,7 @@ TagManager:
   - Enemies
   - Camera
   - Powerups
-  - 
+  - Asteroids
   - 
   - 
   - 

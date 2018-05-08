@@ -7,22 +7,36 @@ public class BasicEnemyBehaviour : MonoBehaviour
     public int damage = 2;
 
     private Camera cam;
+    private Rigidbody2D body;
 
     public bool onScreen = false;
 
     void Start()
     {
         cam = Camera.main;
+        body = GetComponent<Rigidbody2D>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.CompareTag("Player"))
+        {
+            body.isKinematic = true;
+        }
         Damage(collision);
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
         Damage(collision);
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            body.isKinematic = false;
+        }
     }
 
     private void Damage(Collider2D collision)

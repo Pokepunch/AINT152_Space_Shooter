@@ -11,10 +11,15 @@ public class GenericEnemy1 : MonoBehaviour
     public GameObject bullet;
     public Transform[] spawns;
 
-    public float speed = 3.0f;
-    public bool isFiring = false;
+    public float ySpeed = 3.0f;
+    public bool hasFired = false;
     public float fireDelay = 3;
     public float fireDistance = 1;
+
+    private int frameCounter = 0;
+    public int direction;
+
+    private bool doubleSpeedDone = false;
 
     private void Start()
     {
@@ -25,34 +30,54 @@ public class GenericEnemy1 : MonoBehaviour
     {
         if (GetComponent<BasicEnemyBehaviour>().onScreen)
         {
-            if (transform.position.x - target.position.x >= 0)
+            if (!doubleSpeedDone)
+            {
+                DoubleSpeed();
+                doubleSpeedDone = !doubleSpeedDone;
+            }
+            if (transform.position.x - target.position.x >= 0 && !hasFired)
             {
                 if (target != null && canMove)
                 {
-                    transform.position = Vector3.MoveTowards(transform.position, new Vector2(transform.position.x, target.position.y), speed * Time.deltaTime);
+                    transform.position = Vector3.MoveTowards(transform.position, new Vector2(transform.position.x, target.position.y), ySpeed * Time.deltaTime);
                 }
                 float distanceY = transform.position.y - target.position.y;
-                if (distanceY > fireDistance || distanceY > -fireDistance)
+                frameCounter--;
+                if (frameCounter <= 0)
                 {
-                    if (!isFiring)
+                    if (distanceY < 0)
                     {
-                        canMove = false;
-                        isFiring = true;
-                        Invoke("SetCanMove", 1);
-                        Invoke("Shoot", 0.5f);
+                        direction = -1;
                     }
+                    else
+                    {
+                        direction = 1;
+                    }
+                    frameCounter = 30;
+                }
+                if (distanceY < fireDistance && distanceY > -fireDistance)
+                {
+                    canMove = false;
+                    hasFired = true;
+                    direction *= -1;
+                    Invoke("SetCanMove", 1);
+                    Invoke("Shoot", 0.5f);
                 }
             }
-            else
+            else if (canMove)
             {
-                transform.position = Vector3.MoveTowards(transform.position, new Vector2(transform.position.x - 10, transform.position.y), (speed * 3) * Time.deltaTime);
+                if (!hasFired)
+                {
+                    direction = 0;
+                }
+                transform.position = Vector3.MoveTowards(transform.position, new Vector2(transform.position.x - 10, transform.position.y - (10 * direction)), ySpeed * Time.deltaTime);
             }
         }
     }
 
-    void SetNotFiring()
+    private void DoubleSpeed()
     {
-        isFiring = false;
+        GetComponent<ScrollingScript>().multiplier = 10;
     }
 
     void SetCanMove()
@@ -66,6 +91,5 @@ public class GenericEnemy1 : MonoBehaviour
         {
             Instantiate(bullet, spawn.position, spawn.rotation);
         }
-        Invoke("SetNotFiring", fireDelay);
     }
 }

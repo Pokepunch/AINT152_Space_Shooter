@@ -5,18 +5,8 @@ using UnityEngine;
 public class Weap02Script : MonoBehaviour {
 
     /// <summary>
-    /// Determines the delay between firing.
+    /// The time in seconds it takes for the weapon to fully charge.
     /// </summary>
-    public float fireTime = 0.5f;
-    /// <summary>
-    /// The energy of the weapon.
-    /// </summary>
-    public float energy = 10.0f;
-    /// <summary>
-    /// The ammount of energy it costs to fire the weapon.
-    /// </summary>
-    public float energyCost = 1.0f;
-
     public float chargeTime = 1.5f;
 
     public Texture2D cursorGreen;
@@ -45,7 +35,7 @@ public class Weap02Script : MonoBehaviour {
     {
         if (!StaticVariables.controlLock)
         {
-            if (Input.GetMouseButton(0) && energy != 0)
+            if (Input.GetMouseButton(0) && GetComponent<WeaponScript>().energy != 0)
             {
                 deltaTime += Time.deltaTime;
                 if (deltaTime >= chargeTime)
@@ -94,7 +84,7 @@ public class Weap02Script : MonoBehaviour {
 
     void Fire()
     {
-        if (energy != 0)
+        if (GetComponent<WeaponScript>().energy != 0)
         {
             float rotZ = GetMouseRotation();
             Quaternion newRotation;
@@ -108,7 +98,7 @@ public class Weap02Script : MonoBehaviour {
                 {
                     GetComponent<AudioSource>().Play();
                 }
-                EnergySubtract();
+                GetComponent<WeaponScript>().EnergySubtract();
             }
         }
     }
@@ -124,18 +114,5 @@ public class Weap02Script : MonoBehaviour {
         rotZ -= 90;
 
         return rotZ;
-    }
-
-    public void EnergySubtract()
-    {
-        if (energy < energyCost)
-        {
-            energy = 0;
-        }
-        else if (energyCost > 0)
-        {
-            energy -= energyCost;
-        }
-        Debug.Log(gameObject.name + ": energy is " + energy);
     }
 }

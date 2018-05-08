@@ -145,6 +145,7 @@ MonoBehaviour:
   fireTime: 0.5
   energy: 10
   energyCost: 0.75
+  isSpecialWeapon: 0
   bulletPrefab: {fileID: 1330725173515634, guid: a8c093f61a50fe54eab62e76498affbc,
     type: 2}
   bulletSpawn:
@@ -195,6 +196,7 @@ MonoBehaviour:
   fireTime: 0.2
   energy: 10
   energyCost: -1
+  isSpecialWeapon: 0
   bulletPrefab: {fileID: 1861980869906224, guid: 3f52b17cafca67f49a2663db802d25a5,
     type: 2}
   bulletSpawn:
@@ -253,6 +255,7 @@ GameObject:
   m_Component:
   - component: {fileID: 386274292}
   - component: {fileID: 386274294}
+  - component: {fileID: 386274295}
   - component: {fileID: 386274291}
   - component: {fileID: 386274293}
   m_Layer: 9
@@ -273,9 +276,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06cf926793a83ac4e9e0f3e31bc3f997, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireTime: 0.5
-  energy: 10
-  energyCost: 1.25
   chargeTime: 1.2
   cursorGreen: {fileID: 2800000, guid: 7db4e8d29ea86cc49a3fcc9ef8f8b285, type: 3}
   cursorRed: {fileID: 2800000, guid: b64c0d514fbd2724ea374f967b9ae78e, type: 3}
@@ -358,6 +358,23 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
+--- !u!114 &386274295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 386274290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cfb89dbcb71bf7408b6fe184f8d382a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireTime: 0.5
+  energy: 10
+  energyCost: 1.25
+  isSpecialWeapon: 1
+  bulletPrefab: {fileID: 0}
+  bulletSpawn: []
 --- !u!1 &406720789
 GameObject:
   m_ObjectHideFlags: 0
@@ -971,6 +988,7 @@ MonoBehaviour:
   flashFrameGap: 4
   _default: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   white: {fileID: 2100000, guid: dc49b88d0af45ac4e88e9afeb85684a8, type: 2}
+  Explosion: {fileID: 1706303798417244, guid: c70c433c43409c940b3ac60c51e704ef, type: 2}
 --- !u!114 &1115404690
 MonoBehaviour:
   m_ObjectHideFlags: 0

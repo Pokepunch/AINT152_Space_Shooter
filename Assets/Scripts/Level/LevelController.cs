@@ -20,6 +20,7 @@ public class LevelController : MonoBehaviour
         if (OnScrollSpeedChange != null)
         {
             OnScrollSpeedChange(newSpeed);
+            StaticVariables.scrollSpeed = newSpeed;
         }
     }
 

@@ -22,6 +22,7 @@ public class DamageBehaviourPlayer : MonoBehaviour
 
     public Material _default;
     public Material white;
+    public GameObject Explosion;
 
     public void TakeDamage(int damage)
     {
@@ -36,6 +37,7 @@ public class DamageBehaviourPlayer : MonoBehaviour
             flashCounter = flashTimes;
             if (health <= 0)
             {
+                Instantiate(Explosion, transform.position, transform.rotation);
                 PlayerDead();
                 gameObject.SetActive(false);
             }

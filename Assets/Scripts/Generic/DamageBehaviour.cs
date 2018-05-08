@@ -7,6 +7,7 @@ public class DamageBehaviour : MonoBehaviour
 {
     public int health = 10;
     public bool canDamage = true;
+    public bool canDropPowerup = true;
 
     int flashCounter;
     float frameTimer;
@@ -16,6 +17,7 @@ public class DamageBehaviour : MonoBehaviour
 
     public Material _default;
     public Material white;
+    public GameObject Explosion;
 
     public void TakeDamage(int damage)
     {
@@ -26,6 +28,11 @@ public class DamageBehaviour : MonoBehaviour
             flashCounter = flashTimes;
             if (health <= 0)
             {
+                Instantiate(Explosion, transform.position, transform.rotation);
+                if (canDropPowerup)
+                {
+                    SendMessage("SpawnPowerup");
+                }
                 Destroy(gameObject);
             }
         }

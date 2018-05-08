@@ -13,7 +13,7 @@ public class ScrollingScript : MonoBehaviour {
     {
         LevelController.OnScrollSpeedChange += SpeedChange;
         LevelController.OnScrollDirectionChange += DirectionChange;
-        speed *= multiplier;
+        speed = StaticVariables.scrollSpeed;
     }
 
     private void OnDisable()
@@ -25,14 +25,15 @@ public class ScrollingScript : MonoBehaviour {
     // Update is called once per frame
     void FixedUpdate ()
     {
-        Vector3 Movement = new Vector3(speed.x * direction.x, speed.y * direction.y, 0f);
+        Vector2 speedM = speed * multiplier;
+        Vector3 Movement = new Vector3(speedM.x * direction.x, speedM.y * direction.y, 0f);
         Movement *= Time.deltaTime;
         transform.Translate(Movement);
     }
 
     public void SpeedChange(Vector2 newSpeed)
     {
-        speed = newSpeed * multiplier;
+        speed = newSpeed;
     }
 
     public void DirectionChange(Vector2 newDirection)

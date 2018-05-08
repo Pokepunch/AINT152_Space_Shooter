@@ -16,18 +16,28 @@ public class WeaponScript : MonoBehaviour {
     /// The ammount of energy it costs to fire the weapon.
     /// </summary>
     public float energyCost = 1.0f;
+    /// <summary>
+    /// Set for weapons that use a seperate script for weapon logic.
+    /// </summary>
+    public bool isSpecialWeapon = false;
 
     public GameObject bulletPrefab;
     public Transform[] bulletSpawn;
 
     private void OnEnable ()
     {
-        WeaponController.OnWeaponFire += Fire;
+        if (!isSpecialWeapon)
+        {
+            WeaponController.OnWeaponFire += Fire;
+        }
     }
 
     private void OnDisable()
     {
-        WeaponController.OnWeaponFire -= Fire;
+        if (!isSpecialWeapon)
+        {
+            WeaponController.OnWeaponFire -= Fire;
+        }
     }
 
     void Fire()
