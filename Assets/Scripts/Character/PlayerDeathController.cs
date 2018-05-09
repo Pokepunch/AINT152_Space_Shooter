@@ -8,12 +8,12 @@ public class PlayerDeathController : MonoBehaviour
 
     void Start()
     {
-        DamageBehaviourPlayer.PlayerDead += OnDeath;
+        DamageBehaviorPlayer.PlayerDead += OnDeath;
     }
 
     private void OnDestroy()
     {
-        DamageBehaviourPlayer.PlayerDead -= OnDeath;
+        DamageBehaviorPlayer.PlayerDead -= OnDeath;
         FadeOutControllerScript.FadeComplete -= RespawnStart;
     }
 

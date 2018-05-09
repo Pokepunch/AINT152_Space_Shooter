@@ -28,7 +28,7 @@ public class GenericEnemy1 : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (GetComponent<BasicEnemyBehaviour>().onScreen)
+        if (GetComponent<BasicEnemyBehavior>().onScreen)
         {
             if (!doubleSpeedDone)
             {

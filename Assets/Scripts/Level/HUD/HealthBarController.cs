@@ -10,12 +10,12 @@ public class HealthBarController : MonoBehaviour
 
 	void Start ()
     {
-        DamageBehaviourPlayer.PlayerOnHealthChanged += OnPlayerChanged;
+        DamageBehaviorPlayer.PlayerOnHealthChanged += OnPlayerChanged;
 	}
 
     private void OnDisable()
     {
-        DamageBehaviourPlayer.PlayerOnHealthChanged -= OnPlayerChanged;
+        DamageBehaviorPlayer.PlayerOnHealthChanged -= OnPlayerChanged;
     }
 
     public void OnPlayerChanged(int health)

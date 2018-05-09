@@ -37,7 +37,7 @@ public class LevelIntroScript : MonoBehaviour
     }
 	
 	// Update is called once per frame
-	void Update ()
+	void FixedUpdate ()
     {
         if (Player.transform.position.x >= playerStartPos)
         {

@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - BGLayer1
   - Asteroid
+  - Mine
   layers:
   - Default
   - TransparentFX

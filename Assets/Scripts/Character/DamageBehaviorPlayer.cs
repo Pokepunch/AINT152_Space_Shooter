@@ -3,11 +3,16 @@ using System.Collections.Generic;
 using UnityEngine.Events;
 using UnityEngine;
 
-public class DamageBehaviour : MonoBehaviour
+public class DamageBehaviorPlayer : MonoBehaviour
 {
     public int health = 10;
     public bool canDamage = true;
-    public bool canDropPowerup = true;
+
+    public delegate void OnHealthChanged(int health);
+    public static event OnHealthChanged PlayerOnHealthChanged;
+
+    public delegate void OnPlayerDeath();
+    public static event OnPlayerDeath PlayerDead;
 
     int flashCounter;
     float frameTimer;
@@ -24,17 +29,34 @@ public class DamageBehaviour : MonoBehaviour
         if (flashCounter == 0 && canDamage == true)
         {
             health -= damage;
+            if (PlayerOnHealthChanged != null)
+            {
+                PlayerOnHealthChanged(health);
+            }
             Debug.Log(gameObject.name + " damaged. Health is " + health);
             flashCounter = flashTimes;
             if (health <= 0)
             {
                 Instantiate(Explosion, transform.position, transform.rotation);
-                if (canDropPowerup)
-                {
-                    SendMessage("SpawnPowerup");
-                }
-                Destroy(gameObject);
+                PlayerDead();
+                gameObject.SetActive(false);
             }
+        }
+    }
+
+    public void RestoreHealth(int amount)
+    {
+        int _health = health;
+        _health += amount;
+        if (_health > 10)
+        {
+            _health = 10;
+        }
+        health = _health;
+        Debug.Log(gameObject.name + " healed. Health is " + health);
+        if (PlayerOnHealthChanged != null)
+        {
+            PlayerOnHealthChanged(health);
         }
     }
 
