@@ -14,7 +14,7 @@ public class PlayerDeathController : MonoBehaviour
     private void OnDestroy()
     {
         DamageBehaviorPlayer.PlayerDead -= OnDeath;
-        FadeOutControllerScript.FadeComplete -= RespawnStart;
+        FadeOutControllerScript.FadeComplete -= LoadScenes;
     }
 
     private void OnDeath()
@@ -23,15 +23,7 @@ public class PlayerDeathController : MonoBehaviour
         SceneManager.LoadScene("FadeOutScene", LoadSceneMode.Additive);
         GameObject LevelControl = GameObject.Find("LevelController");
         LevelControl.GetComponent<LevelController>().ChangeScrollSpeed(Vector2.zero);
-        FadeOutControllerScript.FadeComplete += RespawnStart;
-    }
-
-    private void RespawnStart()
-    {
-        if (StaticVariables.playerRespawnPoint == Vector2.zero)
-        {
-            LoadScenes();
-        }
+        FadeOutControllerScript.FadeComplete += LoadScenes;
     }
 
     private void LoadScenes()
@@ -39,11 +31,6 @@ public class PlayerDeathController : MonoBehaviour
         SceneManager.LoadScene("SpaceShooterLevel");
         SceneManager.LoadScene("FadeInScene", LoadSceneMode.Additive);
         SceneManager.LoadScene("Level" + StaticVariables.levelIndex, LoadSceneMode.Additive);
+        SceneManager.LoadScene("Level" + StaticVariables.levelIndex + "-" + StaticVariables.levelSection, LoadSceneMode.Additive);
     }
-
-    // Update is called once per frame
-    void Update ()
-    {
-		
-	}
 }

@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class LevelIntroScript : MonoBehaviour
 {
-    public Image healthBar;
+    public Image hud;
     public float playerStartPos = -15;
 
     public GameObject Player;
@@ -18,8 +18,8 @@ public class LevelIntroScript : MonoBehaviour
 
     public void MoveHUD()
     {
-        healthBar.rectTransform.anchoredPosition = new Vector2(healthBar.rectTransform.anchoredPosition.x + 0.5f, healthBar.rectTransform.anchoredPosition.y);
-        if (healthBar.rectTransform.anchoredPosition.x < -295)
+        hud.rectTransform.anchoredPosition = new Vector2(hud.rectTransform.anchoredPosition.x + 0.5f, hud.rectTransform.anchoredPosition.y);
+        if (hud.rectTransform.anchoredPosition.x < -295)
         {
             Invoke("MoveHUD", 0.01f);
         }

@@ -20,9 +20,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4693997107535788}
   - component: {fileID: 212057100863874070}
+  - component: {fileID: 58890136367497056}
   - component: {fileID: 95817709766376230}
   - component: {fileID: 114009917962620684}
   - component: {fileID: 114353914625808816}
+  - component: {fileID: 114912958962581350}
   m_Layer: 0
   m_Name: Explosion
   m_TagString: Untagged
@@ -43,6 +45,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &58890136367497056
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1706303798417244}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.65625
 --- !u!95 &95817709766376230
 Animator:
   serializedVersion: 3
@@ -86,6 +103,18 @@ MonoBehaviour:
   multiplier: 6
   speed: {x: 0, y: 0}
   direction: {x: -1, y: 0}
+--- !u!114 &114912958962581350
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1706303798417244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9f8273bda5664e4c8880df5af76b32c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 4
 --- !u!212 &212057100863874070
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -117,8 +146,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1948807821
-  m_SortingLayer: 6
+  m_SortingLayerID: 1877869305
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: ae340fa0193e1d04b95793515369677a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

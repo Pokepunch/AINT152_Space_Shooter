@@ -27,7 +27,7 @@ GameObject:
   - component: {fileID: 114651316508911178}
   m_Layer: 8
   m_Name: Weap01 Bullet
-  m_TagString: Untagged
+  m_TagString: Player Bullets
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -102,7 +102,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 16
-  destroyTime: 1
 --- !u!114 &114651316508911178
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -128,7 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 231468dc4eec3e14d886e78adfca669d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 4
+  damage: 3
   damageTag:
   - Enemy
   - Asteroid

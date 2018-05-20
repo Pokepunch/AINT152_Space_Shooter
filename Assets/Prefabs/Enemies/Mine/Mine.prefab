@@ -22,11 +22,10 @@ GameObject:
   - component: {fileID: 212936261562619666}
   - component: {fileID: 58973972578760106}
   - component: {fileID: 95138100815879218}
-  - component: {fileID: 114406939940720878}
   - component: {fileID: 114935649986816570}
   - component: {fileID: 114398076309640406}
   m_Layer: 10
-  m_Name: Mines
+  m_Name: Mine
   m_TagString: Mine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -89,30 +88,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   linkedMines: []
+  explosion: {fileID: 1706303798417244, guid: c70c433c43409c940b3ac60c51e704ef, type: 2}
+  callingMine: {fileID: 0}
   damageTags:
   - Player
   - Enemy
-  explodeDelay: 0.3
+  explodeDelay: 0.2
   explosionDamage: 4
---- !u!114 &114406939940720878
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1741524162188156}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 710a05cb08f156c4fb4857de1cffc23e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 1
-  canDamage: 1
-  canDropPowerup: 0
-  flashTimes: 4
-  flashFrameGap: 12
-  _default: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  white: {fileID: 2100000, guid: dc49b88d0af45ac4e88e9afeb85684a8, type: 2}
-  Explosion: {fileID: 1706303798417244, guid: c70c433c43409c940b3ac60c51e704ef, type: 2}
 --- !u!114 &114935649986816570
 MonoBehaviour:
   m_ObjectHideFlags: 1

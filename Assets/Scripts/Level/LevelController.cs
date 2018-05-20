@@ -7,11 +7,12 @@ public class LevelController : MonoBehaviour
 {
     public delegate void ScrollSpeedChange(Vector2 x);
     public static event ScrollSpeedChange OnScrollSpeedChange;
+    public static event ScrollSpeedChange SpeedChangeComplete;
     public static event ScrollSpeedChange OnScrollDirectionChange;
 
     private void OnEnable()
     {
-        ChangeScrollSpeed(new Vector2(1, 0));
+        ChangeScrollSpeed(new Vector2(1.5f, 0));
         ChangeScrollDirection(new Vector2(-1, 0));
     }
 
@@ -21,6 +22,10 @@ public class LevelController : MonoBehaviour
         {
             OnScrollSpeedChange(newSpeed);
             StaticVariables.scrollSpeed = newSpeed;
+            if (SpeedChangeComplete != null)
+            {
+                SpeedChangeComplete(StaticVariables.scrollSpeed);
+            }
         }
     }
 

@@ -6,8 +6,10 @@ using UnityEngine;
 public class DamageBehavior : MonoBehaviour
 {
     public int health = 10;
+    private int healthOriginal;
     public bool canDamage = true;
     public bool canDropPowerup = true;
+    public bool disableOnDeath = false;
 
     int flashCounter;
     float frameTimer;
@@ -17,7 +19,13 @@ public class DamageBehavior : MonoBehaviour
 
     public Material _default;
     public Material white;
-    public GameObject Explosion;
+    public GameObject explosion;
+
+
+    private void Start()
+    {
+        healthOriginal = health;
+    }
 
     public void TakeDamage(int damage)
     {
@@ -28,12 +36,23 @@ public class DamageBehavior : MonoBehaviour
             flashCounter = flashTimes;
             if (health <= 0)
             {
-                Instantiate(Explosion, transform.position, transform.rotation);
+                if (explosion != null)
+                {
+                    Instantiate(explosion, transform.position, transform.rotation);
+                }
                 if (canDropPowerup)
                 {
                     SendMessage("SpawnPowerup");
                 }
-                Destroy(gameObject);
+                if (disableOnDeath)
+                {
+                    gameObject.SetActive(false);
+                    health = healthOriginal;
+                }
+                else
+                {
+                    Destroy(gameObject);
+                }
             }
         }
     }

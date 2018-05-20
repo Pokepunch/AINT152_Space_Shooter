@@ -12,5 +12,5 @@ public static class StaticVariables
 
     public static int levelIndex = 1;
 
-    public static Vector2 playerRespawnPoint = Vector2.zero;
+    public static int levelSection = 1;
 }

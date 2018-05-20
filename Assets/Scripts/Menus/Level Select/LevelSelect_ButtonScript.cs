@@ -31,6 +31,7 @@ public class LevelSelect_ButtonScript : MonoBehaviour
     {
         SceneManager.LoadScene("SpaceShooterLevel");
         SceneManager.LoadScene("FadeInScene", LoadSceneMode.Additive);
+        SceneManager.LoadScene("Level" + StaticVariables.levelIndex + "-1", LoadSceneMode.Additive);
         SceneManager.LoadScene("Level" + StaticVariables.levelIndex, LoadSceneMode.Additive);
     }
 }

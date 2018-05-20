@@ -5,18 +5,10 @@ using UnityEngine;
 public class Bullet2D : MonoBehaviour {
 
     public float speed = 5.0f;
-    public float destroyTime = 0.7f;
-    void Start()
-    {
-        Invoke("Die", destroyTime);
-    }
+
     void Die()
     {
         Destroy(gameObject);
-    }
-    void OnDestroy()
-    {
-        CancelInvoke("Die");
     }
 
     void FixedUpdate()
@@ -29,7 +21,7 @@ public class Bullet2D : MonoBehaviour {
         Vector3 viewPos = Camera.main.WorldToViewportPoint(transform.position);
         if (viewPos.x < 0 || viewPos.x > 1)
         {
-            Destroy(gameObject);
+            Die();
         }
     }
 }

@@ -266,7 +266,7 @@ MonoBehaviour:
   spawns:
   - {fileID: 4855207667616438}
   - {fileID: 4988921069773620}
-  ySpeed: 6
+  ySpeed: 8
   hasFired: 0
   fireDelay: 3
   fireDistance: 0.75
@@ -289,7 +289,7 @@ MonoBehaviour:
   flashFrameGap: 4
   _default: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   white: {fileID: 2100000, guid: dc49b88d0af45ac4e88e9afeb85684a8, type: 2}
-  Explosion: {fileID: 1706303798417244, guid: c70c433c43409c940b3ac60c51e704ef, type: 2}
+  explosion: {fileID: 1706303798417244, guid: c70c433c43409c940b3ac60c51e704ef, type: 2}
 --- !u!114 &114806090220938134
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -5,8 +5,7 @@ using UnityEngine;
 
 public class HealthBarController : MonoBehaviour
 {
-    [SerializeField]
-    private Image healthFill;
+    public Image healthFill;
 
 	void Start ()
     {

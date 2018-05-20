@@ -8,22 +8,26 @@ public class WeaponController : MonoBehaviour {
     public delegate void WeaponFire();
     public static event WeaponFire OnWeaponFire;
 
-    /// <summary>
-    /// Array containing each weapon GameObject.
-    /// </summary>
+    public delegate void WeaponSwitch(bool changeUp, int index, int numbWeaps);
+    public static event WeaponSwitch OnWeaponSwitch;
+
+    // Array containing each weapon GameObject.
     public GameObject[] weaponList;
-    /// <summary>
-    /// Array used for checking if a weapon has been unlocked or not.
-    /// </summary>
+
+    // Array used for checking if a weapon has been unlocked or not.
     public bool[] isWeaponUnlocked;
-    /// <summary>
-    /// Index of currently equipped weapon.
-    /// </summary>
+
+    // Index of currently equipped weapon.
     public int weaponIndex;
-    /// <summary>
-    /// Set when the player is firing.
-    /// </summary>
+
+    // Set when the player is firing.
     public bool isFiring = false;
+
+    // Set if the player can switch weapons.
+    public bool canSwitch = true;
+
+    // The delay in seconds of switching weapons.
+    public float switchDelay = 0.3f;
 
     private void Start()
     {
@@ -36,38 +40,53 @@ public class WeaponController : MonoBehaviour {
     {
         if (!StaticVariables.gamePaused && !StaticVariables.controlLock)
         {
-            if (Input.GetButtonDown("WeaponChangeUp"))
+            if (canSwitch)
             {
-                DisableWeapon(weaponIndex);
-                weaponIndex++;
-                if (weaponIndex > weaponList.Length - 1)
+                if (Input.GetButtonDown("WeaponChangeUp"))
                 {
-                    weaponIndex = 0;
+                    DisableWeapon(weaponIndex);
+                    weaponIndex++;
+                    if (weaponIndex > weaponList.Length - 1)
+                    {
+                        weaponIndex = 0;
+                    }
+                    EnableWeapon(weaponIndex);
+                    if (OnWeaponSwitch != null)
+                    {
+                        OnWeaponSwitch(true, weaponIndex, weaponList.Length - 1);
+                    }
+                    canSwitch = false;
+                    Invoke("SetCanSwitch", switchDelay);
+                    Debug.Log("Weapon changed - increase. Weapon index is " + weaponIndex, gameObject);
                 }
-                EnableWeapon(weaponIndex);
-                Debug.Log("Weapon changed - increase. Weapon index is " + weaponIndex, gameObject);
+                else if (Input.GetButtonDown("WeaponChangeDown"))
+                {
+                    DisableWeapon(weaponIndex);
+                    if (weaponIndex == 0)
+                    {
+                        weaponIndex = weaponList.Length - 1;
+                    }
+                    else
+                    {
+                        weaponIndex--;
+                    }
+                    EnableWeapon(weaponIndex);
+                    if (OnWeaponSwitch != null)
+                    {
+                        OnWeaponSwitch(false, weaponIndex, weaponList.Length - 1);
+                    }
+                    canSwitch = false;
+                    Invoke("SetCanSwitch", switchDelay);
+                    Debug.Log("Weapon changed - decrease. Weapon index is " + weaponIndex, gameObject);
+                }
             }
-            else if (Input.GetButtonDown("WeaponChangeDown"))
-            {
-                DisableWeapon(weaponIndex);
-                if (weaponIndex == 0)
-                {
-                    weaponIndex = weaponList.Length - 1;
-                }
-                else
-                {
-                    weaponIndex--;
-                }
-                EnableWeapon(weaponIndex);
-                Debug.Log("Weapon changed - decrease. Weapon index is " + weaponIndex, gameObject);
-            }
-            if (Input.GetMouseButton(0))
+            if (Input.GetMouseButtonDown(0))
             {
                 if (!isFiring)
                 {
                     if (OnWeaponFire != null)
                     {
-                        IsFiring = true;
+                        isFiring = true;
                         OnWeaponFire();
                         Invoke("SetNotFiring", weaponList[weaponIndex].GetComponent<WeaponScript>().fireTime);
                     }
@@ -92,6 +111,11 @@ public class WeaponController : MonoBehaviour {
         isFiring = false;
     }
 
+    void SetCanSwitch()
+    {
+        canSwitch = true;
+    }
+
     public void EnableWeapon(int index)
     {
         weaponList[index].SetActive(true);
@@ -100,17 +124,5 @@ public class WeaponController : MonoBehaviour {
     public void DisableWeapon(int index)
     {
         weaponList[index].SetActive(false);
-    }
-
-    public bool IsFiring
-    {
-        get
-        {
-            return isFiring;
-        }
-        set
-        {
-            isFiring = value;
-        }
     }
 }

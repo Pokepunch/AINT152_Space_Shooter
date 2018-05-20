@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114208340751764572}
   m_Layer: 8
   m_Name: Weap01 Explosion
-  m_TagString: Untagged
+  m_TagString: Player Bullets
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
