@@ -9,15 +9,15 @@ public class HealthBarController : MonoBehaviour
 
 	void Start ()
     {
-        DamageBehaviorPlayer.PlayerOnHealthChanged += OnPlayerChanged;
+        DamageBehaviorPlayer.PlayerOnHealthChanged += OnHealthChanged;
 	}
 
     private void OnDisable()
     {
-        DamageBehaviorPlayer.PlayerOnHealthChanged -= OnPlayerChanged;
+        DamageBehaviorPlayer.PlayerOnHealthChanged -= OnHealthChanged;
     }
 
-    public void OnPlayerChanged(int health)
+    public void OnHealthChanged(int health)
     {
         healthFill.fillAmount = (float)health / 10;
     }

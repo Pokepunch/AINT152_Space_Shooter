@@ -8,6 +8,9 @@ public class WeaponController : MonoBehaviour {
     public delegate void WeaponFire();
     public static event WeaponFire OnWeaponFire;
 
+    public delegate void PlayerOnEnergyChanged(float energy, int index);
+    public static event PlayerOnEnergyChanged PlayerEnergyChanged;
+
     public delegate void WeaponSwitch(bool changeUp, int index, int numbWeaps);
     public static event WeaponSwitch OnWeaponSwitch;
 
@@ -89,9 +92,29 @@ public class WeaponController : MonoBehaviour {
                         isFiring = true;
                         OnWeaponFire();
                         Invoke("SetNotFiring", weaponList[weaponIndex].GetComponent<WeaponScript>().fireTime);
+                        SubtractEnergy();
                     }
                 }
             }
+        }
+    }
+
+    public void SubtractEnergy()
+    {
+        float currEnergy = weaponList[weaponIndex].GetComponent<WeaponScript>().energy;
+        float cost = weaponList[weaponIndex].GetComponent<WeaponScript>().energyCost;
+        if (currEnergy < cost)
+        {
+            currEnergy = 0;
+        }
+        else if (cost > 0)
+        {
+            currEnergy -= cost;
+        }
+        weaponList[weaponIndex].GetComponent<WeaponScript>().energy = currEnergy;
+        if (PlayerEnergyChanged != null)
+        {
+            PlayerEnergyChanged(currEnergy, weaponIndex);
         }
     }
 
@@ -104,6 +127,10 @@ public class WeaponController : MonoBehaviour {
             currEnergy = 10;
         }
         weaponList[weaponIndex].GetComponent<WeaponScript>().energy = currEnergy;
+        if (PlayerEnergyChanged != null)
+        {
+            PlayerEnergyChanged(currEnergy, weaponIndex);
+        }
     }
 
     void SetNotFiring()

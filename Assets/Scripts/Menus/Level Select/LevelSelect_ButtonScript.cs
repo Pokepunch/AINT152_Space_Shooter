@@ -22,6 +22,7 @@ public class LevelSelect_ButtonScript : MonoBehaviour
 
     public void OnClick(int levelIndex)
     {
+        levelIndex = 1;
         StaticVariables.levelIndex = levelIndex;
         SceneManager.LoadScene("FadeOutScene", LoadSceneMode.Additive);
         FadeOutControllerScript.FadeComplete += LoadLevels;

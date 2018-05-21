@@ -98,7 +98,7 @@ public class Weap02Script : MonoBehaviour {
                 {
                     GetComponent<AudioSource>().Play();
                 }
-                GetComponent<WeaponScript>().EnergySubtract();
+                transform.parent.SendMessage("SubtractEnergy");
             }
         }
     }

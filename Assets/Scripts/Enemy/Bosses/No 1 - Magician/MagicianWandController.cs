@@ -19,6 +19,9 @@ public class MagicianWandController : MonoBehaviour
     public float lerpAmount;
     public float lerpIncrement = 0.02f;
     public float speed = 10;
+    public float speedOriginal;
+
+    public bool colliderActive = true;
 
     public static int? behaviour = null;
     private bool moving = false;
@@ -45,6 +48,8 @@ public class MagicianWandController : MonoBehaviour
 
         magician = transform.parent.gameObject;
         player = GameObject.Find("Hero");
+
+        speedOriginal = speed;
 
         flashOffsets = new float[]
         {
@@ -93,14 +98,25 @@ public class MagicianWandController : MonoBehaviour
         MoveFinishedEvent += SetNotMoving;
     }
 
+    public void ToggleCollider(bool i)
+    {
+        if (i != colliderActive)
+        {
+            GetComponent<Collider2D>().enabled = i;
+            colliderActive = i;
+        }
+    }
+
     private void FixedUpdate()
     {
         if (behaviour != null)
         {
+            ToggleCollider(true);
             GetBehavoir();
         }
         else if (bossStarted && !moving)
         {
+            ToggleCollider(false);
             MoveTopScreen();
         }
         if (targetPos != null)
@@ -204,10 +220,12 @@ public class MagicianWandController : MonoBehaviour
                 {
                     if (moving)
                     {
+                        speed += 0.2f;
                         targetPos = new Vector2(player.transform.position.x + 3.5f, player.transform.position.y);
                     }
                     else if (!moving)
                     {
+                        speed = speedOriginal;
                         targetPos = null;
                         moving = true;
                         behaviour = 1;

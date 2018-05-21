@@ -11,11 +11,14 @@ public class WeaponWheelSlot : MonoBehaviour
     public int index;
 
     public bool is3rdSlot = false;
+    public bool is1stSlot = false;
 
     public float speed = 0.1f;
 
     private Image image;
     private Vector3 originalPos;
+
+    private GameObject fill;
 
     private Image weaponImage;
     public Sprite[] weaponSprites;
@@ -27,6 +30,10 @@ public class WeaponWheelSlot : MonoBehaviour
         originalPos = image.rectTransform.localPosition;
         weaponImage = transform.GetChild(0).GetComponent<Image>();
         weaponImage.sprite = weaponSprites[index];
+        if (is1stSlot)
+        {
+            fill = transform.GetChild(1).gameObject;
+        }
     }
 	
 	// Update is called once per frame
@@ -42,6 +49,12 @@ public class WeaponWheelSlot : MonoBehaviour
                 image.rectTransform.localPosition = originalPos;
                 speed = 0.1f;
                 weaponImage.sprite = weaponSprites[index];
+                if (is1stSlot)
+                {
+                    Debug.Log("Weap0" + index);
+                    float e = GameObject.Find("Weap0" + index).GetComponent<WeaponScript>().energy;
+                    fill.SendMessage("SetEnergy", e);
+                }
             }
         }
 	}

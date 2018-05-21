@@ -52,20 +52,6 @@ public class WeaponScript : MonoBehaviour {
             {
                 GetComponent<AudioSource>().Play();
             }
-            EnergySubtract();
         }
-    }
-
-    public void EnergySubtract()
-    {
-        if (energy < energyCost)
-        {
-            energy = 0;
-        }
-        else if (energyCost > 0)
-        {
-            energy -= energyCost;
-        }
-        Debug.Log(gameObject.name + ": energy is " + energy);
     }
 }

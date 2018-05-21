@@ -59,11 +59,11 @@ public class MagicianShieldScript : MonoBehaviour
                             FadeOut();
                             break;
                         }
-                    case 2:
+                    case 2:/*
                         {
                             Destroy(collision.gameObject);
                             break;
-                        }
+                        }*/
                     case 3:
                         {
                             wand.SendMessage("SetTarget", collision.transform.gameObject);

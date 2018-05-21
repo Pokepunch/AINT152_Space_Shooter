@@ -8,8 +8,8 @@ public class SpeedHUDController : MonoBehaviour {
     public Vector2 previousSpeed;
     public Vector2 newSpeed;
 
-    private bool cooldown = false;
-    private bool ignoreFirstCall = true;
+    public bool cooldown = false;
+    public bool ignoreFirstCall = true;
 
     public GameObject upArrow;
     public GameObject downArrow;
@@ -26,6 +26,11 @@ public class SpeedHUDController : MonoBehaviour {
         LevelController.OnScrollSpeedChange += StartMove;
         speedImage = GetComponent<Image>();
 	}
+
+    private void OnDisable()
+    {
+        LevelController.OnScrollSpeedChange -= StartMove;
+    }
 
     private void StartMove(Vector2 nSpeed)
     {
